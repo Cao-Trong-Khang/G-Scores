@@ -24,7 +24,7 @@ g-score
 
 ## Local Development
 
-Planned root commands:
+Root commands:
 
 ```bash
 npm run dev
