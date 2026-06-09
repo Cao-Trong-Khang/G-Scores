@@ -7,6 +7,8 @@ Backend application workspace for the G-Scores project.
 - Node.js
 - Express
 - TypeScript
+- Prisma
+- PostgreSQL
 
 ## Scripts
 
@@ -15,6 +17,8 @@ npm run dev
 npm run build
 npm run start
 npm run lint
+npm run prisma:generate
+npm run prisma:migrate
 ```
 
 ## Environment
@@ -23,6 +27,7 @@ Create a local `.env` file based on `.env.example` when custom configuration is 
 
 ```env
 PORT=4000
+DATABASE_URL=postgresql://gscore:gscore_password@localhost:5433/gscore_db
 ```
 
 ## Health Check
