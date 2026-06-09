@@ -1,0 +1,16 @@
+{
+  "name": "g-score",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Fullstack JavaScript internship assignment at Golden Owl",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "dev:client": "npm run dev --prefix client",
+    "dev:server": "npm run dev --prefix server",
+    "build": "npm run build --prefix server && npm run build --prefix client",
+    "lint": "npm run lint --prefix server && npm run lint --prefix client"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
+}
