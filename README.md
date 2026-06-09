@@ -33,3 +33,50 @@ npm run dev:server
 npm run build
 npm run lint
 ```
+
+## Local Database
+
+This project uses Docker Compose to run PostgreSQL locally. Copy `.env.example`
+to `.env` if you want to override the default database values.
+
+Validate the Compose file:
+
+```bash
+docker compose config
+```
+
+Start PostgreSQL:
+
+```bash
+docker compose up -d
+```
+
+Check the container and health status:
+
+```bash
+docker compose ps
+```
+
+Read database logs:
+
+```bash
+docker compose logs postgres
+```
+
+Connect to PostgreSQL inside the container:
+
+```bash
+docker compose exec postgres psql -U gscore -d gscore_db
+```
+
+Stop the database:
+
+```bash
+docker compose down
+```
+
+Stop the database and remove local persisted data:
+
+```bash
+docker compose down -v
+```
