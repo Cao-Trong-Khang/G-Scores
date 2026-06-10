@@ -4,7 +4,8 @@ This project was built for the **Golden Owl Web Developer Intern assignment**.
 
 ## Demo
 
-**Live demo:** ...
+**Live demo:** https://g-scores-xi.vercel.app
+**API:** https://g-scores-api-inhx.onrender.com
 
 ## Features
 
