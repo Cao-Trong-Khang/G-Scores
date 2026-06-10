@@ -8,8 +8,3 @@ export type SubjectKey =
   | "history"
   | "geography"
   | "civicEducation";
-
-export type Subject = {
-  key: SubjectKey;
-  label: string;
-};
