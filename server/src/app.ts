@@ -1,5 +1,6 @@
 import cors from 'cors';
 import express from 'express';
+import { rankingRoutes } from './routes/ranking.routes';
 import { reportRoutes } from './routes/report.routes';
 import { scoreRoutes } from './routes/score.routes';
 
@@ -8,6 +9,7 @@ export const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use('/api/rankings', rankingRoutes);
 app.use('/api/reports', reportRoutes);
 app.use('/api/scores', scoreRoutes);
 
