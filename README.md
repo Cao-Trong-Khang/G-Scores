@@ -1,82 +1,108 @@
 # G-Scores
 
-Fullstack JavaScript internship assignment at Golden Owl.
+This project was built for the **Golden Owl Web Developer Intern assignment**.
+
+## Demo
+
+**Live demo:** ...
+
+## Features
+
+- Import raw CSV exam score data into PostgreSQL using Prisma migration and seed script
+- Search candidate scores by registration number
+- View score level statistics by subject with chart
+- View top 10 Group A candidates based on Math, Physics, and Chemistry total score
 
 ## Tech Stack
 
-- React + Vite + TypeScript
-- Node.js + Express + TypeScript
-- Prisma ORM
-- PostgreSQL
-- Tailwind CSS
-- Recharts
-- Docker Compose
+### Frontend
 
-## Project Structure
+![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat&logo=vite&logoColor=FFFFFF)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-0F172A?style=flat&logo=tailwindcss&logoColor=38BDF8)
+![Recharts](https://img.shields.io/badge/Recharts-8884D8?style=flat)
 
-```text
-g-score
-├─ client      # Frontend app: React, Vite, TypeScript, Tailwind CSS, Recharts
-├─ server      # Backend API: Node.js, Express, TypeScript, Prisma
-├─ package.json
-└─ README.md
-```
+### Backend
 
-## Local Development
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=FFFFFF)
+![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=FFFFFF)
+![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=flat&logo=prisma&logoColor=FFFFFF)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=FFFFFF)
+![Docker](https://img.shields.io/badge/Docker_Compose-2496ED?style=flat&logo=docker&logoColor=FFFFFF)
 
-Root commands:
+## Run Locally
+
+### 1. Clone repository
 
 ```bash
-npm run dev
-npm run dev:client
-npm run dev:server
-npm run build
-npm run lint
+git clone https://github.com/Cao-Trong-Khang/G-Scores.git
+cd G-Scores
 ```
 
-## Local Database
-
-This project uses Docker Compose to run PostgreSQL locally. Copy `.env.example`
-to `.env` if you want to override the default database values.
-
-Validate the Compose file:
+### 2. Install dependencies
 
 ```bash
-docker compose config
+npm install
+npm install --prefix server
+npm install --prefix client
 ```
 
-Start PostgreSQL:
+### 3. Create environment files
+
+Create `.env` in the project root:
+
+```env
+POSTGRES_USER=gscore
+POSTGRES_PASSWORD=gscore_password
+POSTGRES_DB=gscore_db
+POSTGRES_PORT=5433
+```
+
+Create `server/.env`:
+
+```env
+PORT=4000
+DATABASE_URL=postgresql://gscore:gscore_password@localhost:5433/gscore_db
+```
+
+Create `client/.env`:
+
+```env
+VITE_API_BASE_URL=http://localhost:4000/api
+```
+
+### 4. Start database
 
 ```bash
 docker compose up -d
 ```
 
-Check the container and health status:
+### 5. Run migration
 
 ```bash
-docker compose ps
+npm run prisma:migrate --prefix server
 ```
 
-Read database logs:
+### 6. Import CSV data
 
 ```bash
-docker compose logs postgres
+npm run db:seed --prefix server
 ```
 
-Connect to PostgreSQL inside the container:
+### 7. Start development server
 
 ```bash
-docker compose exec postgres psql -U gscore -d gscore_db
+npm run dev
 ```
 
-Stop the database:
+Frontend:
 
-```bash
-docker compose down
+```text
+http://localhost:5173
 ```
 
-Stop the database and remove local persisted data:
+Backend:
 
-```bash
-docker compose down -v
+```text
+http://localhost:4000
 ```
